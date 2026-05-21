@@ -22,6 +22,7 @@ public class TestBeanModel {
 		bean.setLastName("Verma");
 		bean.setEmail("abc@gm,ail.com");
 		bean.setPassword("abc");
+		bean.setDob(Date.valueOf("2001-05-10"));
 		
 		 model.add(bean);
 		

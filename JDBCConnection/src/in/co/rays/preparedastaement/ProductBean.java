@@ -4,8 +4,8 @@ public class ProductBean {
 
 	private int pro_id;
 	private String product_name;
-	private String product_description;
-	private double prize;
+	private String prod_description;
+	private double pro_prize;
 	public int getPro_id() {
 		return pro_id;
 	}
@@ -18,17 +18,17 @@ public class ProductBean {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getProduct_description() {
-		return product_description;
+	public String getProd_description() {
+		return prod_description;
 	}
-	public void setProduct_description(String product_description) {
-		this.product_description = product_description;
+	public void setProd_description(String prod_description) {
+		this.prod_description = prod_description;
 	}
-	public double getPrize() {
-		return prize;
+	public double getPro_prize() {
+		return pro_prize;
 	}
-	public void setPrize(double prize) {
-		this.prize = prize;
+	public void setPro_prize(double pro_prize) {
+		this.pro_prize = pro_prize;
 	}
 	
 }

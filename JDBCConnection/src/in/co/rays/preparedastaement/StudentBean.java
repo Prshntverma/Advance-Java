@@ -3,7 +3,7 @@ package in.co.rays.preparedastaement;
 public class StudentBean {
 	private int id;
 	private String name;
-    private String percentage;
+    private double percentage;
     
     
 	public int getId() {
@@ -18,10 +18,10 @@ public class StudentBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPercentage() {
+	public double getPercentage() {
 		return percentage;
 	}
-	public void setPercentage(String percentage) {
+	public void setPercentage(double percentage) {
 		this.percentage = percentage;
 	}
 	
