@@ -4,9 +4,64 @@ import java.sql.Connection;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
  
 public class ProductModel {
+	
+	
+	public List<ProductBean> search() throws ClassNotFoundException, SQLException {
+
+		List<ProductBean> list = new ArrayList<ProductBean>();
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection con = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/rays",
+				"root",
+				"root");
+
+		PreparedStatement pstmt = con.prepareStatement("select * from Product");
+
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+
+			ProductBean bean = new ProductBean();
+
+			bean.setPro_id(rs.getInt(1));
+			bean.setProduct_name(rs.getString(2));
+			bean.setProd_description(rs.getString(3));
+			bean.setPro_prize(rs.getDouble(4));
+
+			list.add(bean);
+		}
+
+		con.close();
+
+		return list;
+	}
+
+	// ================= NEXT PK =================
+
+	
+	public int nextPK() throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays","root","root");
+		int pk = 0;
+		PreparedStatement pstmt = con.prepareStatement("select max(id) from Product");
+		
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			pk = rs.getInt(1);
+		}
+
+		return pk + 1;
+		
+	}
+	
 	
 	
 	public void delete(ProductBean bean) throws SQLException, ClassNotFoundException {
