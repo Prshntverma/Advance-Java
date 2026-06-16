@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import in.co.rays.preparedastaement.UserBean;
+
 public class BundleProModel {
 
     ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.bundle.app");
@@ -124,6 +126,9 @@ public class BundleProModel {
         pstmt.close();
         con.close();
     }
+  
+    
+  
     
     
     
