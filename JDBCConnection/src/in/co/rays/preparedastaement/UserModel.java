@@ -14,7 +14,7 @@ import in.co.rays.exception.DuplicateRecordException;
 
 public class UserModel {
 
-	ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.preparedastaement.app");
+	ResourceBundle rb = ResourceBundle.getBundle("com.rays.bundle.system");
 
 	String driver = rb.getString("driver");
 	String url = rb.getString("url");
