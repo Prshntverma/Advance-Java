@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-	List<UserBean> list = (List) request.getAttribute("list");
+	List<UserBean> list = (List)request.getAttribute("list");
 	String _suc = (String) request.getAttribute("successMsg");
 	String _err = (String) request.getAttribute("errorMsg");
 	%>
