@@ -6,9 +6,9 @@ import com.rays.model.InvoiceModel;
 public class TestInvoice {
  public static void main(String[] args) throws Exception {
 
-	        add();
+	        //add();
 	        //update();
-	        //delete();
+	       // delete();
 	        //findById();
 	       // findByInvoiceNo();
 	        
@@ -48,9 +48,9 @@ public class TestInvoice {
 	    private static void delete() throws Exception {
 
 	        InvoiceBean bean = new InvoiceBean();
-	        bean.setId(1);
+	        bean.setId(5);
 	        InvoiceModel model = new InvoiceModel();
-	        model.delete(bean);
+	       // model.delete(bean);
 
 	        System.out.println("Data Deleted");
 	    }

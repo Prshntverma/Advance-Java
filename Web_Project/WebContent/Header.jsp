@@ -19,6 +19,7 @@
 	<a href="Userctl.do">Add User</a> |
 	<a href="UserListCtl.do">User List</a>
 	<a href="InvoiceCtl.do">Add Invoice</a>
+	<a href="InvoiceListCtl.do">Invoice List</a>
 	 |
 	<a href="Loginctl?operation=logout">Logout</a> |
 	<%

@@ -23,7 +23,7 @@
 		<h3 style="color: green"><%=_suc != null ? _suc : ""%></h3>
 		<h3 style="color: red"><%=_err != null ? _err : ""%></h3>
 
-		<form action="Userctl" method="post">
+		<form action="Userctl.do" method="post">
 
 			<table>
 				<tr>

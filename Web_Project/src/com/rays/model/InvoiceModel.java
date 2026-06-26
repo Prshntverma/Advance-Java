@@ -70,13 +70,13 @@ public class InvoiceModel {
         con.close();
     }
 
-    public void delete(InvoiceBean bean) throws Exception {
+    public void delete(int id) throws Exception {
 
         Connection con = JDBCDataSource.getConnection();
 
         PreparedStatement pstmt = con.prepareStatement("DELETE FROM invoice WHERE id=?");
 
-        pstmt.setInt(1, bean.getId());
+        pstmt.setInt(1, id);
 
         pstmt.executeUpdate();
 
@@ -144,6 +144,7 @@ public class InvoiceModel {
         return bean;
     }
     
+    
     public List<InvoiceBean> list() throws Exception {
 
         List<InvoiceBean> list = new ArrayList<>();
@@ -166,6 +167,59 @@ public class InvoiceModel {
             bean.setStatus(rs.getString("status"));
 
             list.add(bean);
+        }
+
+        rs.close();
+        pstmt.close();
+        con.close();
+
+        return list;
+    }
+    public List<InvoiceBean> search(InvoiceBean bean, int pageNo, int pageSize) throws Exception {
+
+        List<InvoiceBean> list = new ArrayList<>();
+
+        Connection con = JDBCDataSource.getConnection();
+
+        String sql = "SELECT * FROM invoice WHERE 1=1";
+
+        if (bean.getInvoiceNo() != null && bean.getInvoiceNo().length() > 0) {
+            sql += " AND invoiceNo LIKE ?";
+        }
+
+        if (bean.getStatus() != null && bean.getStatus().length() > 0) {
+            sql += " AND status LIKE ?";
+        }
+
+        if (pageSize > 0) {
+            sql += " LIMIT " + (pageNo - 1) * pageSize + "," + pageSize;
+        }
+
+        PreparedStatement pstmt = con.prepareStatement(sql);
+
+        int index = 1;
+
+        if (bean.getInvoiceNo() != null && bean.getInvoiceNo().length() > 0) {
+            pstmt.setString(index++, bean.getInvoiceNo() + "%");
+        }
+
+        if (bean.getStatus() != null && bean.getStatus().length() > 0) {
+            pstmt.setString(index++, bean.getStatus() + "%");
+        }
+
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+
+            InvoiceBean b = new InvoiceBean();
+
+            b.setId(rs.getInt("id"));
+            b.setInvoiceNo(rs.getString("invoiceNo"));
+            b.setAmount(rs.getInt("amount"));
+            b.setInvoiceDate(rs.getDate("invoiceDate"));
+            b.setStatus(rs.getString("status"));
+
+            list.add(b);
         }
 
         rs.close();

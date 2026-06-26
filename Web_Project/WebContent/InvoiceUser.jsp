@@ -4,10 +4,8 @@
 
 <%
 	InvoiceBean bean = (InvoiceBean) request.getAttribute("bean");
-
-	if (bean == null) {
-		bean = new InvoiceBean();
-	}
+    String _suc = (String) request.getAttribute("successMsg");
+    String _err = (String) request.getAttribute("errorMsg");
 %>
 
 <!DOCTYPE html>
@@ -17,12 +15,13 @@
 <title>Invoice Registration</title>
 </head>
 <body>
-
+<%@ include file="Header.jsp"%>
+    <h3 style="color: green"><%=_suc != null ? _suc : ""%></h3>
+	<h3 style="color: red"><%=_err != null ? _err : ""%></h3>
+  <div align = "center">
 	<center>
-
-		<h1>Invoice Registration</h1>
-
-		<form action="InvoiceCtl.do" method="post">
+     <h1>Invoice Registration</h1>
+			<form action="InvoiceCtl.do" method="post">
 
 			<input type="hidden" name="id"
 				value="<%=bean != null ? bean.getId() : ""%>">
@@ -63,6 +62,7 @@
 		</form>
 
 	</center>
-
+	</div>
+ <%@ include file="Footer.jsp"%>
 </body>
 </html>
